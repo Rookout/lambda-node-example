@@ -30,7 +30,7 @@ There are 3 simple steps to integrate Rookout into your existing Node applicatio
 1. Uploading your function : 
     - Zip Upload: In order to run your rookout wrapped function on Lambda, make sure the dependencies are downloaded and zip
     the folder (including node_modules).  
-    zip -r rookout_lambda-test.zip .
+    zip -r rookout_lambda-test.zip .  
     [Download ready-to-upload zip](rookout_lambda-test.zip)
     
         **IMPORTANT:** _If you are building on a MacOS/Windows machine, npm will compile native binaries for this platform. AWS Lambda runs on Linux and thus needs the linux compiled binaries. The solution is doing `npm install` or `npm rebuild` on a Linux machine such as an EC2 instance and re-archive the zip for uploading to Lambda._
