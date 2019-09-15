@@ -1,28 +1,19 @@
-# Quickstart for Node + Agentless Rookout on AWS Lambda
+# Quickstart for Node + Rookout on AWS Lambda
 
-A sample application for using Node + Agentless Rookout on AWS Lambda
-<details>
-<summary>What is Agentless?</summary>
-<p>
-Instead of having to install your own Agent own the machine you are running the code from,
-you can use one of our hosted Agents and just tell the Rook to connect to it.<br/>
-For more information you can see <a href="https://docs.rookout.com/docs/installation-agent-remote.html">our documentation</a>
-</p>
-</details>
-
+A sample application for using Node + Rookout on AWS Lambda
 
 Before following this guide we recommend reading the basic [Node + Rookout] guide
 
 
 ## Rookout Integration Explained
 
-There are 3 simple steps to integrate Rookout into your existing Node application for an [agentless] setup:
+There are 3 simple steps to integrate Rookout into your existing Node application:
 
 1. Add the npm dependency `rookout`
 
 1. Wrap your lambda function with `rookout.wrap()`
 
-1. Set the Rook's agent configuration as environment variables in the Lambda configuration
+1. Set the Rook's configuration as environment variables in the Lambda configuration
 
 
 ## Running on Lambda
@@ -47,7 +38,7 @@ There are 3 simple steps to integrate Rookout into your existing Node applicatio
                     --role <ROLE-ARN> \
                     --handler index.handler \
                     --runtime nodejs8.10 \
-                    --environment Variables="{ROOKOUT_AGENT_HOST=cloud.agent.rookout.com,ROOKOUT_AGENT_PORT=443,ROOKOUT_ROOK_TAGS=lambda,ROOKOUT_TOKEN=<org_token>}"
+                    --environment Variables="{ROOKOUT_ROOK_TAGS=lambda,ROOKOUT_TOKEN=<org_token>}"
         ```  
         To create an API Gateway resource, refer to [AWS Documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html)
         or create it through the AWS Lambda Console.
@@ -57,8 +48,6 @@ There are 3 simple steps to integrate Rookout into your existing Node applicatio
 
 
 1. Set the Rook's agent configuration as environment variables in the Lambda configuration, fill the Environment Variables for :
-    - `ROOKOUT_AGENT_HOST` : cloud.agent.rookout.com
-    - `ROOKOUT_AGENT_PORT` : 443
     - `ROOKOUT_TOKEN` : Your Organization Token
     - `ROOKOUT_ROOK_TAGS` : lambda
     
@@ -84,7 +73,7 @@ exports.handler = rookout.wrap((event, context, callback) => {
 });
 ```
     
-1. Set Lambda environment for `ROOKOUT_AGENT_HOST` (cloud.agent.rookout.com), `ROOKOUT_AGENT_PORT` (443) and `ROOKOUT_TOKEN` in order to connect to a remote hosted agent
+1. Set Lambda environment `ROOKOUT_TOKEN` in order to connect
     
 
 [Node + Rookout]: https://docs.rookout.com/docs/installation-node.html
